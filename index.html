@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KageLens | Cinematic Native Camera</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --surface-color: #121212;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --accent: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Glow */
+        .ambient-glow {
+            position: absolute;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            animation: pulse 8s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+
+        .container {
+            z-index: 10;
+            background: rgba(18, 18, 18, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 4rem 3rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            max-width: 90%;
+            width: 500px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: floatUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        @keyframes floatUp {
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        p.description {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent);
+            color: #000000;
+            text-decoration: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px; /* Maximum smooth curve */
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 100%;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+        }
+
+        .download-btn svg {
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .support-link {
+            position: absolute;
+            bottom: 30px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            z-index: 10;
+        }
+
+        .support-link:hover {
+            color: var(--text-main);
+        }
+
+        /* Hardware Acceleration for smooth rendering */
+        .container, .download-btn {
+            will-change: transform, opacity;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <div class="container">
+        <h1>KageLens</h1>
+        <div class="version-badge">Android Build (arm64)</div>
+        
+        <p class="description">
+            A cinematic, hardware-linked native camera built for absolute precision. Exposure control, dynamic optical mapping, and real-time focus matrices.
+        </p>
+
+        <a href="./kagelens.apk" download="kagelens-production.apk" class="download-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download APK
+        </a>
+    </div>
+
+    <a href="mailto:support@kagelens.com?subject=KageLens%20Bug%20Report" class="support-link">
+        Report a Bug / Support
+    </a>
+
+</body>
+</html>
