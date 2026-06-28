@@ -105,7 +105,7 @@
             color: #000000;
             text-decoration: none;
             padding: 1.2rem 2.5rem;
-            border-radius: 50px; /* Maximum smooth curve */
+            border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 700;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -123,22 +123,54 @@
             height: 24px;
         }
 
-        .support-link {
+        /* NEW: Futuristic Gmail Web Portal CSS */
+        .footer-portal {
             position: absolute;
-            bottom: 30px;
-            color: var(--text-muted);
+            bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
             z-index: 10;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .support-link:hover {
+        .footer-portal:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-portal .portal-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-portal .portal-email {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .footer-portal:hover .portal-email {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .footer-portal:hover .portal-label {
             color: var(--text-main);
         }
 
-        /* Hardware Acceleration for smooth rendering */
-        .container, .download-btn {
+        /* Hardware Acceleration */
+        .container, .download-btn, .footer-portal {
             will-change: transform, opacity;
         }
     </style>
@@ -155,7 +187,7 @@
             A cinematic, hardware-linked native camera built for absolute precision. Exposure control, dynamic optical mapping, and real-time focus matrices.
         </p>
 
-        <a href="https://github.com/Tanmoy847/Kage-Lens-Download-Page/releases/download/v1.0.0/kagelens.apk" class="download-btn">
+        <a href="https://github.com/Tanmoy847/Kage-Lens/releases/download/v1.0.0/kagelens.apk" class="download-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
@@ -165,8 +197,12 @@
         </a>
     </div>
 
-    <a href="mailto:support@kagelens.com?subject=KageLens%20Bug%20Report" class="support-link">
-        Report a Bug / Support
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tanmoybanik847@gmail.com&su=KageLens%20Inquiry%20/%20New%20Project&body=Hi%20Tanmoy,%0A%0AI%20am%20reaching%20out%20regarding%20[a%20KageLens%20bug%20/%20a%20new%20app%20or%20design%20project]:%0A%0A" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="footer-portal">
+        <span class="portal-label">Bug Reports & Client Inquiries</span>
+        <span class="portal-email">tanmoybanik847@gmail.com</span>
     </a>
 
 </body>
